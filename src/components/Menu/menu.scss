@@ -1,0 +1,103 @@
+.menu {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  // transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  z-index: 10;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.menu.visible {
+  transform: translateX(0) translateY(0);
+  opacity: 1;
+}
+
+.menu.hidden {
+  transform: translateX(150%) translateY(0);
+  opacity: 0;
+}
+.menu-button {
+  position: relative; /* Aby pseudo-element był pozycjonowany względem przycisku */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  transition: background-color 0.3s ease; /* Możesz pozostawić dla zmian innych właściwości */
+  animation: slideIn 0.5s forwards;
+  animation-delay: var(--delay, 0s);
+  color: var(--menu-text-color);
+  opacity: var(--menu-text-opacity);
+}
+
+.menu-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 150%; /* Początkowo pseudo-element zaczyna się poza przyciskiem z prawej strony */
+  width: 0;
+  height: 100%; 
+  border: none;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background-color: var(--menu-background-color);
+  opacity: var(--menu-background-opacity);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: -1; /* Umieszczamy pseudo-element za zawartością przycisku */
+}
+.menu-button::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-size: 12px;
+  
+}
+
+.menu-button:hover::before {
+  transition-delay: 500ms;
+  left: -150px; /* Rozszerzamy pseudo-element o 150px na lewo */
+  width: calc(100% + 150px); /* Szerokość przycisku + dodatkowe 150px */
+
+}
+.menu-button:hover::after {
+  opacity: var(--menu-text-opacity);
+  transition: opacity 1s ease 1000ms;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-trigger {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100vh;
+  z-index: 9;
+  pointer-events: auto;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
