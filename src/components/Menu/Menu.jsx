@@ -11,21 +11,24 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { GiDualityMask } from "react-icons/gi";
 import { FaHouse } from "react-icons/fa6";
 import { FaPuzzlePiece } from "react-icons/fa";
+import { GiTheaterCurtains } from "react-icons/gi";
+
+import { Link } from "react-router-dom";
 
 const sections = [
-  { label: "Home", icon: <FaHouse /> },
-  { label: "Czarna Dziura", icon: <IoEllipse /> },
-  { label: "FAQ", icon: <HiOutlineQuestionMarkCircle /> },
-  { label: "Secret Key", icon: <GiSkeletonKey /> },
-  { label: "Sekcja 4", icon: <PiScrollLight /> },
-  { label: "The code is hungry…", icon: <LiaCookieBiteSolid /> },
-  { label: "Latarnia w Mgle", icon: <GiLighthouse /> },
-  { label: "Telefon do przyjaciela", icon: <FaPhoneVolume /> },
-  { label: "Twarz Twojej Marki", icon: <GiDualityMask /> },
-  { label: "Układanka Potrzeb", icon: <FaPuzzlePiece /> },
-
-  { label: "Zakulisowo", textColor: "#000" },
+  { label: "Home", icon: <FaHouse />, path: "/" },
+  { label: "Czarna Dziura", icon: <IoEllipse />, path: "/black-hole" },
+  { label: "FAQ", icon: <HiOutlineQuestionMarkCircle />, path:"/faq" },
+  { label: "Secret Key", icon: <GiSkeletonKey />, path:"/secret-key" },
+  { label: "Niedokończona historia", icon: <PiScrollLight />, path:"/unfinished-tale" },
+  { label: "The code is hungry…", icon: <LiaCookieBiteSolid />, path:"/cookies" },
+  { label: "Latarnia w Mgle", icon: <GiLighthouse />, path:"/lighthouse" },
+  { label: "Telefon do przyjaciela", icon: <FaPhoneVolume />, path:"/phone-to-friend" },
+  { label: "Twarz Twojej Marki", icon: <GiDualityMask />, path:"/mask" },
+  { label: "Układanka Potrzeb", icon: <FaPuzzlePiece />, path:"/needs-puzzles" },
+  { label: "Zakulisowo", icon: <GiTheaterCurtains />, path:"/behind-the-scenes" },
 ];
+
 
 const Menu = ({
   onSectionChange,
@@ -86,10 +89,11 @@ const Menu = ({
         onMouseLeave={handleMenuMouseLeave}
       >
         {sections.map((section, index) => (
-          <button
+          <Link
             key={index}
+            to={section.path}
             className="menu-button"
-            onClick={() => onSectionChange(index)}
+            // onClick={() => onSectionChange(index)}
             style={{
               "--delay": `${index * 0.1}s`,
               
@@ -97,7 +101,7 @@ const Menu = ({
             data-label={section.label}
           >
             <div className="icon-wrapper">{section.icon}</div>
-          </button>
+          </Link>
         ))}
       </div>
     </>

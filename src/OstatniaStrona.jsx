@@ -43,7 +43,7 @@ const sections = [
     backgroundOpacity: 0.35,
   },
   {
-    label: "",
+    label: "Niedokończona historia",
     background: "/images/background07.png",
     content: "Treść sekcji 4",
     textColor: "#000",
