@@ -21,18 +21,6 @@
     transition: opacity 1s ease;
   }
   
-  .background.current {
-    opacity: 1;
-    z-index: 1;
-  }
   
-  .background.previous {
-    opacity: 1;
-    z-index: 2;
-  }
-  
-  .background.previous.fade-out {
-    opacity: 0;
-  }
   
   

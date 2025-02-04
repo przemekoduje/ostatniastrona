@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import usePreloadImages from "./hooks/usePreloadImages.jsx";
 import Loader from "./components/Loader/Loader";
+import Background from "./components/Background/Background";
 import Menu from "./components/Menu/Menu";
 import Home from "./pages/Home/Home.jsx";
 import BehindTheScenes from "./pages/BehindTheScenes/BehindTheScenes.jsx";
@@ -22,11 +23,11 @@ const imageUrls = [
   "/images/background02.png",
   "/images/background06.png",
   "/images/background07.png",
-  "/images/background03.png",
+  "/images/background10.png",
   "/images/background05.png",
   "/images/background04.png",
   "/images/background08.png",
-  "/images/background01.png",
+  "/images/background12.png",
   "/images/background11.png",
 ];
 
@@ -48,6 +49,7 @@ function App() {
           <Loader progress={progress} />
         ) : (
           <>
+          <Background /> 
             <Menu />
             <Routes>
               <Route path="/" element={<Home />} />
