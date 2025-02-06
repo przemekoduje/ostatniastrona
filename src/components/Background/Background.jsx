@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, forwardRef } from "react";
+import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import './background.scss';
+import "./background.scss";
 
 // Mapa tła do każdej podstrony
 const backgroundMap = {
@@ -18,7 +18,8 @@ const backgroundMap = {
   "/behind-the-scenes": "/images/background11.png",
 };
 
-const Background = () => {
+// ✅ Poprawione użycie `forwardRef`
+const Background = forwardRef((props, ref) => {
   const location = useLocation();
   const [prevSrc, setPrevSrc] = useState(null);
   const [currentSrc, setCurrentSrc] = useState(backgroundMap[location.pathname]);
@@ -27,12 +28,11 @@ const Background = () => {
     setPrevSrc(currentSrc);
     setTimeout(() => {
       setCurrentSrc(backgroundMap[location.pathname] || "/images/default.png");
-    }, 200); // Opóźnienie dla płynniejszej zmiany
+    }, 200);
   }, [location.pathname]);
 
- 
   return (
-    <div className="background-container">
+    <div className="background-container" ref={ref}>
       {prevSrc && (
         <motion.div
           key={prevSrc}
@@ -45,17 +45,15 @@ const Background = () => {
         />
       )}
 
-      <motion.div
+      {/* ✅ Tylko `div` obsłuży GSAP */}
+      <div
         key={currentSrc}
         className="background"
         style={{ backgroundImage: `url(${currentSrc})` }}
-        initial={{ opacity: 0, filter: "blur(10px)" }}
-        animate={{ opacity: 1, filter: "blur(0px)" }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 1 }}
+        ref={ref} // Przekazanie refa dla GSAP
       />
     </div>
   );
-};
+});
 
 export default Background;

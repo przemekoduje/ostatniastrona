@@ -49,7 +49,7 @@ function App() {
           <Loader progress={progress} />
         ) : (
           <>
-          <Background /> 
+          {/* <Background />  */}
             <Menu />
             <Routes>
               <Route path="/" element={<Home />} />

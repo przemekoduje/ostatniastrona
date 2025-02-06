@@ -1,7 +1,31 @@
-  .home-page {
-    // background-image: url("../../../public/images/background01.png");
-    // background-size: cover;
-    // background-position: bottom left;
-    // background-repeat: no-repeat;
+.home-page {
+  height: 200vh; // Dłuższa strona, aby móc przewijać
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  .div1,
+  .div2 {
+    height: 100vh;
   }
-  
+
+  .div1 {
+    color: white;
+  }
+
+  .square {
+    width: 150px;
+    height: 150px;
+    background-color: fuchsia;
+  }
+  .square2 {
+    
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 64, 255);
+  }
+  .red{
+    background-color: rgb(255, 0, 21);
+  }
+}
