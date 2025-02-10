@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lottie from 'lottie-react';
+import animationData from '../../../../assets/Flow.json';
 import "./secondSection.scss";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,7 +12,7 @@ const SecondSection = () => {
   const trueRef = useRef(null);
   const trueParRef = useRef(null);
   const imageRef = useRef(null);
-  const spriteRef = useRef(null);
+  const lottieRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -43,22 +45,30 @@ const SecondSection = () => {
       duration: 1,
       ease: "power4.out",
     });
-    tl.fromTo(
-      spriteRef.current,
-      { backgroundPosition: "0px 0px" },
-      {
-        backgroundPosition: "-1800vw 0px", // przykładowa wartość (dostosuj do wymiarów)
-        ease: "steps(4)", // np. 4 klatki
-        duration: 1,
-      }
-    );
+
+
+    const lottieInstance = lottieRef.current;
+
+    gsap.to(lottieInstance, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+        onUpdate: (self) => {
+          const frame = self.progress * lottieInstance.totalFrames;
+          lottieInstance.goToAndStop(frame, true);
+        },
+      },
+    });
+
   }, []);
 
   return (
     <div className="second-section">
       <div className="secondWrapper" ref={sectionRef}>
         <div className="trueStory" ref={trueRef}>
-          PRAWDZIWA HISTORIA
+          HISTORIA PRAWDZIWA
         </div>
         <div
           className="trueStoryParagraf"
@@ -69,8 +79,15 @@ const SecondSection = () => {
           DOSKONAŁEJ WITRYNY? <br />
           ODWAŻYSZ SIE CZYTAC DALEJ?
         </div>
-        <div ref={spriteRef} className="spriteSheet" />
+        
       </div>
+      <Lottie
+          lottieRef={lottieRef}
+          animationData={animationData}
+          loop={false}
+          autoplay={false}
+          style={{ width: '100%', height: '100%' }}
+        />
     </div>
   );
 };
