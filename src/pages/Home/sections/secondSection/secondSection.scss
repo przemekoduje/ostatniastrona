@@ -1,0 +1,54 @@
+.second-section {
+  position: relative;
+  width: 100%;
+  height: 400vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1f1f;
+  border: 1px solid red;
+
+  .secondWrapper {
+    // border: 1px solid red;
+    min-width: 550px;
+
+
+    .trueStory {
+    //   position: absolute;
+      // top: 50%;
+      font-family: "Jost", serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      color: #d4d4d4;
+      font-size: 32px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .trueStoryParagraf {
+        font-family: "Jost", serif;
+      font-optical-sizing: auto;
+      font-weight: 200;
+      font-style: normal;
+      color: #d4d4d4;
+      font-size: 32px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    // img{
+    //     z-index: 10;
+    // }
+    .spriteSheet {
+        width: 100vw;           // szerokość pojedynczej klatki
+        height: 100vh;          // wysokość pojedynczej klatki
+        background-image: url("../../../../../public/images/home_timeline/06_anim.png");
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        // background-size: cover; // jeśli chcesz, by się rozciągało, ewentualnie włącz
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+  }
+}

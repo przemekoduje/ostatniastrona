@@ -1,0 +1,42 @@
+/* IntroSection.scss */
+.intro-section {
+  position: relative;
+  width: 100%;
+  height: 400vh;
+  overflow: hidden;
+}
+
+.ellipse {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #1f1f1f;
+  border-radius: 50%;
+//   transform: translate(-50%, -50%);
+//   transform-origin: center center; /* Elipsa rośnie z jej środka */
+  z-index: 1;
+}
+// .triger {
+//   position: absolute;
+//   top: 100vh;
+//   width: 100px;
+//   height: 200px;
+//   background-color: red;
+// }
+.intro-text {
+  position: absolute;
+  top: 25%;
+  white-space: nowrap;
+  font-size: 450px;
+  color: white;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  font-family: "Jost", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  color: #d4d4d4;
+}
