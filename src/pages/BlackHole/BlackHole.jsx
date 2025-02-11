@@ -3,7 +3,7 @@ import "./blackHole.scss";
 import { motion } from "framer-motion";
 import Background from "../../components/Background/Background";
 import lottie from "lottie-web";
-import animationData from "../../assets/Flow.json";
+import animationData from "../../assets/Flow2.json";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -28,9 +28,10 @@ const BlackHole = () => {
       start: "top top",
       end: "+=100%",
       scrub: true,
-      pin: true,
-      pinSpacing: false,
-      // toggleActions: "play none none none",
+      // pin: true,
+      // pinSpacing: false,
+      anticipatePin: 1,
+      toggleActions: "play none none none",
       markers: true,
       onUpdate: (self) => {
         const frame = self.progress * lottieInstance.totalFrames;
@@ -54,7 +55,7 @@ const BlackHole = () => {
             position: "absolute",
             top: 0,
             width: "100%",
-            height: "50%",
+            height: "100%",
             border: "1px solid red",
           }}
         ></div>

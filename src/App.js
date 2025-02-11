@@ -35,6 +35,8 @@ function App() {
   const { loaded, progress } = usePreloadImages(imageUrls);
   const [showLoader, setShowLoader] = useState(true);
 
+  const faqText = "Gdzieś w cyfrowych archiwach krąży opowieść o wielkiej, starożytnej Księdze, której ostatnia karta jest kluczem do wszystkiego. Mówią na nią „Ostatnia Strona” – zawiera ona przepis na perfekcyjny projekt witryny, doskonały w swej prostocie i niezmienny w czasie. Legenda głosi, że kto ją odkryje, ten już nigdy nie będzie musiał troszczyć się o swoją tożsamość w sieci."
+
   // Ukryj loader po pełnym załadowaniu
   useEffect(() => {
     if (loaded) {
@@ -44,6 +46,8 @@ function App() {
 
   return (
     <div className="App">
+
+
       <Router>
         {showLoader ? (
           <Loader progress={progress} />
@@ -54,7 +58,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/black-hole" element={<BlackHole />} />
-              <Route path="/faq" element={<Faq />} />
+              <Route path="/faq" element={<Faq text={faqText} />} />
               <Route path="/secret-key" element={<SecretKey />} />
               <Route path="/unfinished-tale" element={<UnfinishedTale />} />
               <Route path="/cookies" element={<Cookies />} />
