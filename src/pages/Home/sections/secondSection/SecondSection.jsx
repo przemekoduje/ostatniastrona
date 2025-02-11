@@ -11,7 +11,6 @@ const SecondSection = () => {
   const sectionRef = useRef(null);
   const trueRef = useRef(null);
   const trueParRef = useRef(null);
-  const imageRef = useRef(null);
   const lottieRef = useRef(null);
 
   useEffect(() => {

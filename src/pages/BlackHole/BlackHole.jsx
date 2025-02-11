@@ -1,16 +1,65 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./blackHole.scss";
 import { motion } from "framer-motion";
 import Background from "../../components/Background/Background";
+import lottie from "lottie-web";
+import animationData from "../../assets/Flow.json";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function BlackHole() {
+gsap.registerPlugin(ScrollTrigger);
+
+const BlackHole = () => {
+  const lottieContainerRef = useRef(null);
+
+  useEffect(() => {
+    // Inicjalizacja animacji Lottie
+    const lottieInstance = lottie.loadAnimation({
+      container: lottieContainerRef.current,
+      animationData: animationData,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+    });
+
+    // Konfiguracja ScrollTrigger
+    ScrollTrigger.create({
+      trigger: ".lottie-wrapper",
+      start: "top top",
+      end: "+=100%",
+      scrub: true,
+      pin: true,
+      pinSpacing: false,
+      // toggleActions: "play none none none",
+      markers: true,
+      onUpdate: (self) => {
+        const frame = self.progress * lottieInstance.totalFrames;
+        lottieInstance.goToAndStop(frame, true);
+      },
+    });
+
+    // Czyszczenie po odmontowaniu komponentu
+    return () => {
+      lottieInstance.destroy();
+    };
+  }, []);
+
   return (
-
-    <div className="page blackHole">
+    <div className="blackHole">
       <Background />
-      <h1>blackHole</h1>
-      <p>Witaj na stronie blackHole!</p>
+      <div className="lottie-wrapper">
+        <div
+          ref={lottieContainerRef}
+          style={{
+            position: "absolute",
+            top: 0,
+            width: "100%",
+            height: "50%",
+            border: "1px solid red",
+          }}
+        ></div>
+      </div>
     </div>
-    
   );
-}
+};
+export default BlackHole;

@@ -1,3 +1,15 @@
-.blackHole{
-    height: 100vh;
+.blackHole {
+  position: relative;
+  height: 200vh; /* Dostosuj w zależności od potrzeb */
+  display: flex;
+
+//   align-items: flex-start;
+
+  .lottie-wrapper {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: 2px solid blue;
+  }
 }
