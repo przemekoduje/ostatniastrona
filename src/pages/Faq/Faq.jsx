@@ -39,16 +39,16 @@ export default function Faq({ text }) {
         ease: 'none',
       },
       scrollTrigger: {
-        trigger: ".text-container",
-        start: 'top 50%',
-        end: 'top 20%',
+        trigger: ".text-wrapper",
+        start: 'bottom 200%',
+        end: 'bottom 0%',
+        toggleActions: "play complete complete reset",
         scrub: 0.7,
-        pin: true,
-        
+
         markers: true,
         onUpdate: () => {
           const words = textRef.current.querySelectorAll('.word');
-          
+
           words.forEach((word, wordIndex) => {
             const originalWord = text.split(' ')[wordIndex];
             const wordLetters = word.querySelectorAll('.letter');
@@ -69,21 +69,23 @@ export default function Faq({ text }) {
   return (
     <div className="page faq">
       <Background />
-      <div className="text-container" ref={textRef}>
-        {shuffledText.split(' ').map((word, wordIndex) => (
-          <span key={wordIndex} className="word">
-            {word.split('').map((char, charIndex) => (
-              <span
-                key={`${wordIndex}-${charIndex}`}
-                className={`letter ${char.trim() === '' ? 'space' : ''}`}
-                data-word={wordIndex}
-              >
-                {char}
-              </span>
-            ))}
-            <span className="space"> </span>
-          </span>
-        ))}
+      <div className="text-wrapper">
+        <div className="text-container" ref={textRef}>
+          {shuffledText.split(' ').map((word, wordIndex) => (
+            <span key={wordIndex} className="word">
+              {word.split('').map((char, charIndex) => (
+                <span
+                  key={`${wordIndex}-${charIndex}`}
+                  className={`letter ${char.trim() === '' ? 'space' : ''}`}
+                  data-word={wordIndex}
+                >
+                  {char}
+                </span>
+              ))}
+              <span className="space"> </span>
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

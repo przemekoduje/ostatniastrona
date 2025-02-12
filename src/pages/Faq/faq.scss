@@ -1,31 +1,46 @@
 .faq {
     position: relative;
     width: 100%;
-    height: 200vh;
+    height: 400vh;
 
-    .text-container {
-        position: sticky;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%);
-        max-width: 550px;
-        display: flex;
-        flex-wrap: wrap;
-        color: #d4d4d4;
+    .text-wrapper{
+
+        position: relative;
+        // top: 0;
+        // left: 0;
+        width: 100%;     
+        height: 200vh;
+        background-color: antiquewhite;
+
+        .text-container {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+           
+            max-width: 550px;
+            display: flex;
+            flex-wrap: wrap;
+            color: #222222;
+            border: 1px solid red;
+    
+        }
+    
+        .word {
+            // transition: font-size 0.3s;
+            font-size: 28px;
+            /* Początkowy rozmiar liter */
+            display: inline-block;
+            /* Umożliwia indywidualne animowanie każdej litery */
+        }
+    
+        .space {
+            width: 8px;
+            /* Możesz dostosować szerokość spacji */
+            display: inline-block;
+        }
 
     }
 
-    .letter {
-        // transition: font-size 0.3s;
-        font-size: 20px;
-        /* Początkowy rozmiar liter */
-        display: inline-block;
-        /* Umożliwia indywidualne animowanie każdej litery */
-    }
-
-    .space {
-        width: 8px;
-        /* Możesz dostosować szerokość spacji */
-        display: inline-block;
-    }
+    
 }
