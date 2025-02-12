@@ -4,11 +4,11 @@
     height: 200vh;
 
     .text-container {
-        position: absolute;
+        position: sticky;
         top: 50%;
         left: 50%;
         transform: translateX(-50%);
-        max-width: 450px;
+        max-width: 550px;
         display: flex;
         flex-wrap: wrap;
         color: #d4d4d4;
@@ -17,7 +17,7 @@
 
     .letter {
         // transition: font-size 0.3s;
-        font-size: 22px;
+        font-size: 20px;
         /* Początkowy rozmiar liter */
         display: inline-block;
         /* Umożliwia indywidualne animowanie każdej litery */
