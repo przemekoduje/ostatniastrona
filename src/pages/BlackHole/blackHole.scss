@@ -1,15 +1,21 @@
 .blackHole {
   position: relative;
-  height: 300vh; /* Dostosuj w zależności od potrzeb */
-  display: flex;
+  height: 400vh;
 
-//   align-items: flex-start;
-
-  .lottie-wrapper {
-    position:  sticky;
+  .rive-wrapper{
+    position: sticky;
     top: 0;
     height: 100vh;
     width: 100%;
     border: 2px solid blue;
+  }
+
+  .png {
+    position:fixed;
+    top: 50%;
+    right: -100px; // Startowa pozycja poza ekranem
+    transform: translateY(-50%);
+    width: auto;
+    height: 100px;
   }
 }

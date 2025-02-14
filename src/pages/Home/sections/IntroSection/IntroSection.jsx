@@ -61,9 +61,10 @@ const IntroSection = () => {
   return (
     <div className="intro-section">
       <div className="ellipse" ref={ellipseRef}></div>
-      <h1 className="intro-text" ref={textRef}>
+      {/* <h1 className="intro-text" ref={textRef}>
         ostatnia strona
-      </h1>
+      </h1> */}
+      <img src="/images/home_timeline/ostatniastrona.png" className="intro-text" alt="" ref={textRef}/>
     </div>
   );
 };

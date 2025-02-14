@@ -58,8 +58,7 @@ export default function Faq({ text }) {
             );
 
             if (allReachedSize) {
-              word.innerHTML = originalWord; // Podmiana na oryginalne słowo
-            }
+              word.innerHTML = `${originalWord} <span class="space"></span>`;            }
           });
         },
       },
@@ -76,13 +75,13 @@ export default function Faq({ text }) {
               {word.split('').map((char, charIndex) => (
                 <span
                   key={`${wordIndex}-${charIndex}`}
-                  className={`letter ${char.trim() === '' ? 'space' : ''}`}
+                  className="letter"
                   data-word={wordIndex}
                 >
                   {char}
                 </span>
               ))}
-              <span className="space"> </span>
+              <span > </span>
             </span>
           ))}
         </div>

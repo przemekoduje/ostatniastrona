@@ -46,20 +46,20 @@ const SecondSection = () => {
     });
 
 
-    const lottieInstance = lottieRef.current;
+    // const lottieInstance = lottieRef.current;
 
-    gsap.to(lottieInstance, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
-        onUpdate: (self) => {
-          const frame = self.progress * lottieInstance.totalFrames;
-          lottieInstance.goToAndStop(frame, true);
-        },
-      },
-    });
+    // gsap.to(lottieInstance, {
+    //   scrollTrigger: {
+    //     trigger: sectionRef.current,
+    //     start: 'top bottom',
+    //     end: 'bottom top',
+    //     scrub: true,
+    //     onUpdate: (self) => {
+    //       const frame = self.progress * lottieInstance.totalFrames;
+    //       lottieInstance.goToAndStop(frame, true);
+    //     },
+    //   },
+    // });
 
   }, []);
 
@@ -80,13 +80,7 @@ const SecondSection = () => {
         </div>
         
       </div>
-      <Lottie
-          lottieRef={lottieRef}
-          animationData={animationData}
-          loop={false}
-          autoplay={false}
-          style={{ width: '100%', height: '100%' }}
-        />
+      
     </div>
   );
 };
